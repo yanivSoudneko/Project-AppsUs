@@ -1,3 +1,11 @@
+export const keepService = {
+    getById
+}
+
+function getById() {
+    promise.resolve(keepData)
+}
+
 const keepData = [{
         type: "NoteTxt",
         isPinned: true,

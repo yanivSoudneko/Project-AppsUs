@@ -6,6 +6,7 @@ import bookApp from './apps/book/pages/book-app.cmp.js'
 import bookDetails from './apps/book/pages/book-details.cmp.js'
 import bookAddPage from './apps/book/pages/book-add-page.cmp.js'
 
+import mailRead from './apps/mail/pages/email-read-page.cmp.js';
 const routes = [
     { path: '/', component: homePage },
     { path: '/about', component: aboutPage },
@@ -23,7 +24,14 @@ const routes = [
         ]
     },
     { path: '/keep', component: keepApp, children: [] },
-    { path: '/mail', component: mailApp, children: [] },
+    {
+        path: '/mail',
+        component: mailApp,
+    },
+    {
+        path: '/mail/:emailId',
+        component: mailRead,
+    },
 ];
 
 export const mainRouter = new VueRouter({ routes });

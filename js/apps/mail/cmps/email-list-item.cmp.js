@@ -1,10 +1,12 @@
 export default {
     template: /*html*/ `
-        <div class="email-container flex a-center">
-            <div class="favorite star" :class="{'yellow-star': email.isFavorite}">&#9733;</div>
-            <div class="read" @click="isRead = !isRead">{{isReadSymbol}}</div>
-            <div class="subject">
-                {{email.subject}}
+        <div class="email-container flex a-center j-between">
+            <div class="flex a-center btn-subject-wrapper">
+                <div class="favorite star" @click.stop="email.isFavorite = !email.isFavorite" :class="{yellow: email.isFavorite}">&#9733;</div>
+                <div class="read" @click.stop="email.isRead = !email.isRead">{{isReadSymbol}}</div>
+                <div class="subject">
+                    {{email.subject}}
+                </div>
             </div>
             <div class="created-at">
                 {{parsedDate}}
@@ -16,6 +18,14 @@ export default {
         return {};
     },
     methods: {},
+    watch: {
+        email: {
+            deep: true,
+            handler() {
+                console.log(this.email);
+            },
+        },
+    },
     computed: {
         isReadSymbol() {
             return this.email.isRead ? '📖' : '📕';

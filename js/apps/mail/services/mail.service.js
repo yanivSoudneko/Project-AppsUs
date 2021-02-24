@@ -80,15 +80,17 @@ const emailsData = [
 ];
 
 //CRUD
-function query(filter = null) {
+function query(filter = null, bool) {
     return storageService.query(DB_NAME).then((emails) => {
         console.log('emails:', emails[0]);
         if (!emails.length) {
             emails = _addDefaultEmails(emailsData);
             storageService.postMany(DB_NAME, emails);
         }
-        if (filter && emails[0].hasOwnproperty(filter)) {
-            emails = emails.filter((email) => email[filter]);
+        if (filter && emails[0].hasOwnProperty(filter)) {
+            emails = emails.filter((email) => email[filter] === bool);
+            console.log('emails filtered:', emails);
+            console.log({ id: emails[0].id, isTrashed: emails[0].isTrashed });
         }
         return emails;
     });
@@ -98,10 +100,10 @@ function getById(id) {
     return storageService.get(DB_NAME, id);
 }
 
-function saveEmail(email) {
-    getById(email.id).then((email) => {
-        if (email) return storageService.put(DB_NAME, email);
-        return storageService.post(DB_NAME, email);
+function saveEmail(saveEmail) {
+    return getById(saveEmail.id).then((email) => {
+        if (email) return storageService.put(DB_NAME, saveEmail);
+        return storageService.post(DB_NAME, saveEmail);
     });
 }
 
