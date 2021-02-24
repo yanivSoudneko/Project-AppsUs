@@ -1,16 +1,8 @@
+import emailListItem from './email-list-item.cmp.js';
 export default {
     template: /*html*/ `
         <div class="email-list flex column">
-            <div v-for="(email,idx) in emails" class="email-container flex" :key="email.id">
-                <div class="favorite">star</div>
-                <div class="read"></div>
-                <div class="subject">
-                    {{email.subject}}
-                </div>
-                <div class="created-at">
-                    {{email.sentAt}}
-                </div>
-            </div>
+            <email-list-item v-for="(email,idx) in emails" :email="email" :key="email.id"></email-list-item>
         </div>`,
     props: ['emails'],
     data() {
@@ -19,5 +11,8 @@ export default {
     methods: {},
     created() {
         console.log(this.emails);
+    },
+    components: {
+        emailListItem,
     },
 };
