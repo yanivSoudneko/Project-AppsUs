@@ -1,0 +1,154 @@
+    * {
+        box-sizing: border-box;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+        text-align: center;
+    }
+    
+    h1 {
+        color: rgb(219, 218, 218);
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    p {
+        font-size: 12px;
+    }
+    /* HEADER */
+    
+    .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(107, 105, 94);
+        padding: 20px;
+        height: 10vh;
+    }
+    /* APP */
+    
+    .book-app {
+        background-color: rgb(212, 211, 200);
+        min-height: 90vh;
+    }
+    
+    .btns-container {
+        text-align: center;
+    }
+    /* FILTER */
+    
+    .book-filter {
+        background-color: rgb(231, 221, 160);
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+    }
+    /* LIST */
+    
+    .book-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    /* PREVIEW */
+    
+    .book-preview-container {
+        width: 200px;
+        height: 200px;
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin: 10px;
+        justify-content: space-around;
+    }
+    /* DETAILS */
+    
+    .book-details {
+        display: flex;
+        position: fixed;
+        color: rgb(43, 34, 34);
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(100, 97, 97, 0.938);
+        padding: 10px;
+    }
+    
+    .modal-container {
+        display: flex;
+        /* flex-direction: column; */
+    }
+    
+    .about-book {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: baseline;
+        padding: 20px;
+    }
+    
+    .card-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .close-modal {
+        position: absolute;
+        background-color: rgb(122, 54, 54);
+        width: 50px;
+        top: 20px;
+        right: 30px;
+    }
+    
+    button {
+        background-color: rgb(231, 221, 160);
+    }
+    
+    .card-img {
+        display: block;
+        max-width: 230px;
+        max-height: 95px;
+        width: auto;
+        height: auto;
+    }
+    
+    .expensive {
+        color: red;
+    }
+    
+    .isOnSale {
+        color: rgb(191, 226, 191);
+        font-size: 30px
+    }
+    
+    .cheap {
+        color: green;
+    }
+    /* Home page */
+    
+    .home-image {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        background: url(../image/home-page.jpg) no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }

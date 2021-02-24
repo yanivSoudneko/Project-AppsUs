@@ -1,5 +1,6 @@
 @import "./basics.css";
 @import "./flex-grid.css";
+@import "./book.css";
 
 /**LAYOUT**/
 
@@ -60,6 +61,11 @@
 
 
 /**KEEPS**/
+
+.keep-icon {
+    width: 20px;
+    height: 20px;
+}
 
 
 /**MAIL**/
