@@ -1,14 +1,14 @@
 export default {
     template: /*html*/ `
-    <section>
+    
     
     <div class="btn-list over-pad">
-            <button>Compose</button>
+            <button><i class="fas fa-plus-circle"></i>Compose</button>
             <button>Inbox</button>
             <button>Marked</button>
             <button>Trash</button>
         </div>
-        </section>`,
+        `,
     data() {
         return {};
     },

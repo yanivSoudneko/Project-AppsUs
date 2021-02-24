@@ -4,10 +4,15 @@
 /**LAYOUT**/
 
 .main-size {
-    max-width: 1200px;
-    min-width: 70vw;
-    margin: auto;
-    /* flex: 1; */
+    height: 85vh;
+    max-width: 870px;
+    margin: 0 auto;
+}
+
+.main-container {
+    height: 85vh;
+    max-width: 870px;
+    margin: 0 auto;
 }
 
 .dark-theme {
@@ -58,28 +63,40 @@
 
 
 /**MAIL**/
+
 .email-list {
     padding: 15px;
     background-color: #fff;
     gap: 20px;
+    flex: 1;
+    margin-left: 10px;
+    background-image: url(../images/mail.jpg);
+    background-size: cover;
 }
 
 .email-list .email-container {
     padding: 15px;
-    background-color: rgb(184, 178, 178);
+    background-color: rgb(184, 178, 178, 0.6);
     gap: 20px;
 }
+
 .btn-list {
     display: flex;
     flex-direction: column;
     width: 120px;
     margin: 0;
+    margin-top: 10px;
 }
 
 .filter-list {
     padding: 10px;
     margin-left: 10px;
     border-radius: 10px;
+}
+
+.mail-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
 
@@ -135,4 +152,13 @@ a:hover {
 footer {
     background-color: #b5b0b0;
     padding: 10px;
+}
+
+
+/* ICONS */
+
+.fa-plus-circle {
+    color: red;
+    font-size: 20px;
+    padding-right: 8px;
 }

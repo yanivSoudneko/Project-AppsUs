@@ -21,11 +21,6 @@ body {
     width: 100vw;
 }
 
-.page {
-    /* flex: 1; */
-    /* height: 100%; */
-}
-
 
 /**basics**/
 
@@ -48,9 +43,9 @@ sup {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: transparent;
     outline: none;
-    border: none;
+    border: 1px solid grey;
     color: white;
     padding: 5px;
     text-align: center;

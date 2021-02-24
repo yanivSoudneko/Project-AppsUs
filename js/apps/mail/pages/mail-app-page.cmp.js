@@ -10,10 +10,13 @@ export default {
     <div className="main-size bg-primary contain-app">
         <div class="email-filters-list-wrapper">
             <email-filters></email-filters>
+            </div>
+            <div class="mail-container flex j-between">
+            <email-left-menu></email-left-menu>
             <email-list :emails="emails"></email-list>
+            </div>
             <email-read></email-read>
-        </div>
-        <email-left-menu></email-left-menu>
+       
     </div>`,
     data() {
         return {
