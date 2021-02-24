@@ -7,13 +7,11 @@ import { emailService } from '../services/mail.service.js';
 
 export default {
     template: /*html*/ `
-        <div class="main-size bg-primary contain-app">
+        <div class="email-filters-list-wrapper main-size bg-primary contain-app">
+            <email-filters></email-filters>
+            <email-list :emails="filteredEmails"></email-list>
+            <email-read></email-read>
             <email-left-menu></email-left-menu>
-            <div class="email-filters-list-wrapper">
-                <email-filters></email-filters>
-                <email-list :emails="emails"></email-list>
-                <email-read></email-read>
-            </div>
         </div>`,
     data() {
         return {
