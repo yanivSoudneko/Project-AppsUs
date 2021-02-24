@@ -1,5 +1,8 @@
 export default {
-    template: `<div class="contain-app">Mail</div>`,
+    template: `
+    <div class="main-size bg-primary contain-app">
+    EMAILS
+    </div>`,
     data() {
         return {};
     },
