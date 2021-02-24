@@ -23,7 +23,7 @@
 }
 
 .bg-primary {
-    background-color: lightcoral;
+    background-color: #b5b0b0;
 }
 
 .contain-app {
@@ -42,6 +42,11 @@
     text-align: center;
 }
 
+.home-container {
+    padding-top: 150px;
+    color: #b5b0b0;
+}
+
 
 /**BOOKS**/
 
@@ -54,8 +59,30 @@
 
 /**MAIL**/
 
-.home-page {
+
+/* ABOUT */
+
+.about-page {
+    background-image: url(../images/about.jpg);
     height: 85vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.about-container {
+    position: absolute;
+    text-align: center;
+    color: #474444;
+    left: 285px;
+    padding: 20px;
+    top: 50px;
+    max-width: 350px;
+}
+
+.about-container p,
+h2 {
+    padding-bottom: 20px;
 }
 
 
@@ -76,13 +103,13 @@ a {
 }
 
 a:hover {
-    color: green;
+    color: rgb(129, 139, 129);
 }
 
 
 /* FOOTER */
 
 footer {
-    background-color: grey;
+    background-color: #b5b0b0;
     padding: 10px;
 }

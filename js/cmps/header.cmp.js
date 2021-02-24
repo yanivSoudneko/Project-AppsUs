@@ -2,7 +2,7 @@ export default {
     template: ` 
     <nav class="navbar bg-primary">
     <div class="main-size flex j-between a-center">
-        <h3 class="logo" @click="$router.push('/')">AppSus</h3>
+        <h3 class="logo" @click="$router.push('/')">AppSus.</h3>
         <div class="nav-bar-tabs clean-list flex">
             <router-link active-class="active-link" class="clean-anchor nav-link flex a-center j-center" to="/" exact>
                 Home
