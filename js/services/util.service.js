@@ -3,6 +3,8 @@ export const utilService = {
     loadFromStorage,
     makeId,
     formatAsCurrency,
+    testImage,
+    matchYoutubeUrl,
 };
 
 function saveToStorage(key, value) {
@@ -30,4 +32,35 @@ function formatAsCurrency(value, currency) {
         currency: currency,
         minimumFractionDigits: 2,
     });
+}
+
+function testImage(url) {
+    return new Promise(function (resolve, reject) {
+        var timeout = 3000;
+        var timer,
+            img = new Image();
+        img.onerror = img.onabort = function () {
+            clearTimeout(timer);
+            reject('error');
+        };
+        img.onload = function () {
+            clearTimeout(timer);
+            resolve(url);
+        };
+        timer = setTimeout(function () {
+            // reset .src to invalid URL so it stops previous
+            // loading, but doesn't trigger new load
+            img.src = '//!!!!/test.jpg';
+            reject('timeout');
+        }, timeout);
+        img.src = url;
+    });
+}
+
+function matchYoutubeUrl(url) {
+    var p = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if (url.match(p)) {
+        return url.match(p)[1];
+    }
+    return false;
 }

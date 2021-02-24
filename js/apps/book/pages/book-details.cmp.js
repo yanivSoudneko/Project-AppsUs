@@ -1,7 +1,7 @@
-import LongText from '../cmps/long-text.cmp.js'
-import { bookService } from '../services/book-services.js'
-import { eventBus } from '../services/event-bus-service.js'
-import ReviewAdd from '../cmps/review-add.cmp.js'
+import LongText from '../cmps/long-text.cmp.js';
+import { bookService } from '../services/book-services.js';
+import { eventBus } from '../../../services/eventBus.service.js';
+import ReviewAdd from '../cmps/review-add.cmp.js';
 export default {
     // props: ['book'],
     template: `
@@ -34,62 +34,65 @@ export default {
     data() {
         return {
             book: null,
-            bookToEdit: null
-        }
+            bookToEdit: null,
+        };
     },
     methods: {
         closeDetails() {
-            this.$router.push('/book')
-        }
+            this.$router.push('/book');
+        },
     },
     computed: {
         save() {
-            bookService.save(this.bookToEdit)
-                .then(book => {
+            bookService
+                .save(this.bookToEdit)
+                .then((book) => {
                     const msg = {
                         txt: 'Book saved succesfully',
-                        type: 'success'
-                    }
-                    eventBus.$emit('show-msg', msg)
-                    this.$router.push('/book')
+                        type: 'success',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                    this.$router.push('/book');
                 })
-                .catch(err => {
-                    console.log(err)
+                .catch((err) => {
+                    console.log(err);
                     const msg = {
                         txt: 'Error,please try again',
-                        type: 'error'
-                    }
-                    eventBus.$emit('show-msg', msg)
-                })
+                        type: 'error',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                });
         },
         bookLength() {
             if (this.book.pageCount > 500) {
-                return 'long reading'
+                return 'long reading';
             } else if (this.book.pageCount > 200) {
-                return 'decent reading'
+                return 'decent reading';
             } else if (this.book.pageCount < 100) {
-                return 'light reading'
+                return 'light reading';
             }
         },
         publishedDate() {
             if (this.book.publishedDate > 10) {
-                return 'Veteran Book'
+                return 'Veteran Book';
             } else if (this.book.publishedDate < 1) {
-                return 'New!'
+                return 'New!';
             }
         },
     },
     components: {
         LongText,
-        ReviewAdd
+        ReviewAdd,
     },
     mounted() {
-        const { bookId } = this.$route.params
-        console.log("🚀 ~ file: book-details.cmp.js ~ line 88 ~ mounted ~ this.$route.params", this.$route.params)
-        bookService.getById(bookId)
-            .then(book => {
-                this.book = book
-            })
+        const { bookId } = this.$route.params;
+        console.log(
+            '🚀 ~ file: book-details.cmp.js ~ line 88 ~ mounted ~ this.$route.params',
+            this.$route.params,
+        );
+        bookService.getById(bookId).then((book) => {
+            this.book = book;
+        });
         console.log('book id:', bookId);
-    }
-}
+    },
+};

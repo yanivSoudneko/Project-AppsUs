@@ -1,10 +1,9 @@
 import starRating from './rating.cmp.js';
 
-import { bookService } from '../services/book-services.js'
-import { eventBus } from '../services/event-bus-service.js'
+import { bookService } from '../services/book-services.js';
+import { eventBus } from '../../../services/eventBus.service.js';
 
 export default {
-
     template: `
   <form @submit.prevent="save">
     <h2>add review</h2>
@@ -23,21 +22,21 @@ export default {
             review: {
                 fullName: 'Books Reader',
                 rate: 1,
-                txt: ''
-            }
-        }
+                txt: '',
+            },
+        };
     },
     methods: {
         save() {
-            bookService.addReview(this.$route.params.bookId, this.review)
+            bookService
+                .addReview(this.$route.params.bookId, this.review)
                 .then(() => {
                     const msg = {
                         txt: 'Review added to book',
-                        type: 'success'
-                    }
-                    eventBus.$emit('show-msg', msg)
-                })
-
+                        type: 'success',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                });
         },
         setRating(rating) {
             console.log('rating:', rating);
@@ -45,8 +44,7 @@ export default {
         },
     },
     mounted() {
-        this.$refs.nameInput.focus()
+        this.$refs.nameInput.focus();
     },
-    components: { starRating }
-
-}
+    components: { starRating },
+};

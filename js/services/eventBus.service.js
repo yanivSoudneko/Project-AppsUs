@@ -1,1 +1,1 @@
-export default eventBus = new Vue();
+export const eventBus = new Vue();

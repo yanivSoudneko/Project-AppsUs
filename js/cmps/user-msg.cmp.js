@@ -1,7 +1,7 @@
-import { eventBus } from '../../../services/eventBus.service.js';
+import { eventBus } from '../services/eventBus.service.js';
 
 export default {
-    template: `
+    template: /*html*/ `
         <section v-if="msg" class="user-msg" :class="msg.type">
             <p>{{msg.txt}}</p>
         </section>
@@ -12,9 +12,9 @@ export default {
         };
     },
     methods: {
-        setMsg(msg) {
-            console.log('set msg', msg);
-            this.msg = msg;
+        setMsg({ txt, type }) {
+            this.msg = { txt, type };
+            console.log('  this.msg:', this.msg);
             setTimeout(() => {
                 this.msg = null;
             }, 3000);

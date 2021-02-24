@@ -67,10 +67,18 @@ function query(filter = null, bool) {
     });
 }
 
+function saveNote(saveNote) {
+    return getById(saveNote.id).then((email) => {
+        if (email) return storageService.put(DB_NAME, saveNote);
+        return storageService.post(DB_NAME, saveNote);
+    });
+}
+
 function makeNote(noteData) {
     var noteContent = {};
     const {
         type,
+        mainTitle,
         info: { title, url, txt, todos },
     } = noteData;
     switch (noteData.type) {
@@ -89,7 +97,7 @@ function makeNote(noteData) {
     noteContent.createdAt = Date.now();
     return {
         id: utilService.makeId(),
-        title,
+        title: mainTitle || title,
         isPinned: false,
         content: [noteContent],
         createdAt: Date.now(),

@@ -168,6 +168,17 @@ a:hover {
     color: rgb(129, 139, 129);
 }
 
+/**USER-MSG**/
+.user-msg {
+    position: absolute;
+    min-width: 10vw;
+    min-height: 5vh;
+    top: 50px;
+    right: 50px;
+    background-color: rgb(46, 192, 33);
+    z-index:999999;
+    color:black;
+}
 
 /* FOOTER */
 
