@@ -165,6 +165,9 @@ a:hover {
 /* FOOTER */
 
 footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
     background-color: #b5b0b0;
     padding: 10px;
 }

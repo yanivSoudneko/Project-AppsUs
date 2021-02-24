@@ -1,19 +1,29 @@
 export default {
     template: /*html*/ `
         <div class="filter-list">
-        <select class ="filter-select">
-        <option value="All">All</option>
-        <option value="Read">Read</option>
-        <option value="Unread">Unread</option>
-        <option value="Marked">Marked</option>
-        <option value="Trash">Trash</option>
+        <select @change="emitFilter" v-model="filterBy" class="filter-select">
+            <option value="all">All</option>
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+            <option value="favorites">Favorites</option>
         </select>
-            <input list="filters" name="filter">
+            <input name="search" @input="emitSearchStr" v-model="searchStr">
         </div>`,
     data() {
         return {
             filterBy: 'all',
+            searchStr: '',
         };
     },
-    methods: {},
+    methods: {
+        emitFilter() {
+            console.log(this.filterBy);
+            this.$emit('filterSelected', this.filterBy);
+        },
+        emitSearchStr() {
+            console.log(this.searchStr);
+            if (this.searchStr === '') return;
+            this.$emit('inputSearchStr', this.searchStr);
+        },
+    },
 };
