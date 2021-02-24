@@ -26,8 +26,7 @@ var defaultNotes = [
     {
         type: 'video',
         info: {
-            url:
-                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            url: 'https://www.youtube.com/embed/tgbNymZ7vqY',
             title: 'Me video ttle',
         },
     },

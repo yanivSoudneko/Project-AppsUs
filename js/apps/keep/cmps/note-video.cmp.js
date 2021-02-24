@@ -2,7 +2,7 @@ export default {
     template: /*html*/ `
         <div>
             <iframe width="420" height="315"
-                src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                :src="content.info.url">
             </iframe>
         </div>`,
     props: ['content'],
