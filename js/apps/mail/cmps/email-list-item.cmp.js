@@ -3,12 +3,13 @@ import { emailService } from '../services/mail.service.js';
 export default {
     template: /*html*/ `
         <div class="email-container flex a-center j-between">
-            <div class="flex a-center btn-subject-wrapper">
+            <div class="flex a-center btn-subject-wrapper ">
+        
                 <div class="favorite star" @click.stop="email.isFavorite = !email.isFavorite" :class="{yellow: email.isFavorite}">&#9733;</div>
                 <div class="read" @click.stop="email.isRead = !email.isRead">{{isReadSymbol}}</div>
+                </div>
                 <div class="subject">
                     {{email.subject}}
-                </div>
             </div>
             <div class="created-at">
                 {{parsedDate}}

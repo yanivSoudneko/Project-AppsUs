@@ -3,10 +3,10 @@ export default {
     
     
     <div class="btn-list over-pad">
-            <button><i class="fas fa-plus-circle"></i>Compose</button>
-            <button>Inbox</button>
-            <button>Marked</button>
-            <button>Trash</button>
+            <button><img class="side-bar" src="images/add.png"/></img>Compose</button>
+            <button><img class="side-bar" src="images/inbox.jpg"/>Inbox</button>
+            <button><img class="side-bar" src="images/star.jpg"/>Marked</button>
+            <button><img class="side-bar" src="images/trash.jpg"/>Trash</button>
         </div>
         `,
     data() {
