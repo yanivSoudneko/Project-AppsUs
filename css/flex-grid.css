@@ -1,0 +1,29 @@
+/**flex**/
+.flex {
+    display: flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.j-center {
+    justify-content: center;
+}
+
+.flex.j-between {
+    justify-content: space-between;
+}
+
+.flex.j-around {
+    justify-content: space-around;
+}
+
+.flex.a-center {
+    align-items: center;
+}
+
+/**grid**/
+.grid {
+    display: grid;
+}

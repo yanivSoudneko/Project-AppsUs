@@ -1,0 +1,32 @@
+@import "./basics.css";
+@import "./flex-grid.css";
+
+/**LAYOUT**/
+.main-size {
+    max-width: 1200px;
+    min-width: 70vw;
+    margin: auto;
+    flex: 1;
+}
+
+.dark-theme {
+    background: rgb(31, 31, 31);
+    background: linear-gradient(0deg, rgba(31, 31, 31, 1) 0%, rgba(121, 121, 121, 1) 100%);
+    color: rgb(240, 240, 240);
+}
+
+.light-theme {
+    background: rgb(242, 234, 234);
+    background: linear-gradient(0deg, rgba(242, 234, 234, 1) 0%, rgba(227, 210, 210, 1) 100%);
+    color: rgb(31, 31, 31);
+}
+
+.bg-primary {
+    background-color: lightcoral;
+}
+
+/**HOME**/
+/**BOOKS**/
+/**book-list**/
+/**KEEPS**/
+/**MAIL**/

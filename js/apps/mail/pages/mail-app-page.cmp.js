@@ -1,5 +1,5 @@
 export default {
-    template: `<div>MAil</div>`,
+    template: `<div>Mail</div>`,
     data() {
         return {};
     },
