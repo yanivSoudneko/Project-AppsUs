@@ -1,5 +1,5 @@
-import { storageService } from '../../../services/async-storage.service';
-import { utilService } from '../../../services/util.service';
+import { storageService } from '../../../services/async-storage.service.js';
+import { utilService } from '../../../services/util.service.js';
 
 export const emailService = {
     query,
@@ -112,7 +112,7 @@ function deleteEmail(email) {
 //internals
 function _createDefaultEmail({ subject, body, sentAt = Date.now() }) {
     const newDefaultMail = {
-        id: utils.makeId(),
+        id: utilService.makeId(),
         subject,
         body,
         sentAt,
