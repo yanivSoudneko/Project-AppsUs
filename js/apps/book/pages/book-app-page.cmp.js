@@ -1,5 +1,5 @@
 export default {
-    template: `<div>BOOKS</div>`,
+    template: `<div class="contain-app">BOOKS</div>`,
     data() {
         return {};
     },

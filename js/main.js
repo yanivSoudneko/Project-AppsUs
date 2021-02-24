@@ -4,7 +4,7 @@ import mainFooter from './cmps/footer.cmp.js';
 import { mainRouter } from './routes.js';
 
 const template = /*html*/ `
-    <div>
+    <div class="main-app">
         <main-header></main-header>
         <router-view></router-view>
         <main-footer></main-footer>

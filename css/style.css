@@ -7,7 +7,7 @@
     max-width: 1200px;
     min-width: 70vw;
     margin: auto;
-    flex: 1;
+    /* flex: 1; */
 }
 
 .dark-theme {
@@ -26,8 +26,21 @@
     background-color: lightcoral;
 }
 
+.contain-app {
+    height: 85vh;
+}
+
 
 /**HOME**/
+
+.home-page {
+    background-image: url(../images/home.jpg);
+    height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
 
 
 /**BOOKS**/
@@ -40,3 +53,36 @@
 
 
 /**MAIL**/
+
+.home-page {
+    height: 85vh;
+}
+
+
+/* NAVBAR */
+
+.logo {
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.nav-bar-tabs {
+    margin-right: 20px;
+}
+
+a {
+    margin: 5px;
+}
+
+a:hover {
+    color: green;
+}
+
+
+/* FOOTER */
+
+footer {
+    background-color: grey;
+    padding: 10px;
+}

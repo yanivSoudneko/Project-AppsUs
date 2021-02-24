@@ -1,5 +1,5 @@
 export default {
-    template: `<div>KEEPS</div>`,
+    template: `<div class="contain-app">KEEPS</div>`,
     data() {
         return {};
     },
