@@ -1,5 +1,8 @@
 export default {
-    template: `<div>Mail</div>`,
+    template: `
+    <div class="main-size bg-primary">
+    EMAILS
+    </div>`,
     data() {
         return {};
     },
