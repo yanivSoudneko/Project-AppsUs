@@ -80,6 +80,14 @@
     gap: 20px;
 }
 
+.email-list .email-container .star {
+    font-size: 20px;
+}
+
+.email-list .email-container .star.is-yellow {
+    color: rgb(233, 180, 7);
+}
+
 .btn-list {
     display: flex;
     flex-direction: column;
