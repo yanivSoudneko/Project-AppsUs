@@ -1,9 +1,9 @@
 export default {
     template: /*html*/ `
-    <div>{{note}}
-        <img :src="note.info.url"  alt="note.title"/>
+    <div>
+        <img class="note-image" :src="content.info.url"  alt="content.title"/>
     </div>`,
-    props: ['note'],
+    props: ['content'],
     data() {
         return {};
     },

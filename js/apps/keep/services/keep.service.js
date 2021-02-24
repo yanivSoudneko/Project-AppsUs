@@ -12,27 +12,31 @@ var defaultNotes = [
         type: 'text',
         info: {
             txt: 'Fullstack Me Baby!',
+            title: 'Me text title',
         },
     },
     {
         type: 'image',
         info: {
-            url: 'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
-            title: 'Me playing Mi',
+            url:
+                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            title: 'Me image title',
         },
     },
     {
         type: 'video',
         info: {
-            url: 'http://some-img/me',
-            title: 'Me playing Mi',
+            url:
+                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            title: 'Me video ttle',
         },
     },
     {
         type: 'image',
         info: {
-            url: 'http://some-img/me',
-            title: 'Me playing Mi',
+            url:
+                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            title: 'Me image again title',
         },
     },
     {
@@ -40,9 +44,10 @@ var defaultNotes = [
         info: {
             label: 'How was it:',
             todos: [
-                { txt: 'Do that', doneAt: null },
-                { txt: 'Do this', doneAt: null },
+                { txt: 'Do that', doneAt: null, isDone: false },
+                { txt: 'Do this', doneAt: null, isDone: false },
             ],
+            title: 'Me todo title',
         },
     },
 ];
@@ -64,27 +69,32 @@ function query(filter = null, bool) {
 }
 
 function makeNote(noteData) {
-    var newNote = {};
+    var noteContent = {};
     const {
         type,
-        title,
-        info: { url, txt, todos },
+        info: { title, url, txt, todos },
     } = noteData;
     switch (noteData.type) {
         case 'text':
-            newNote = { type, info: { txt } };
+            noteContent = { type, info: { txt } };
             break;
         case 'image':
         case 'video':
-            newNote = { type, title, info: { url } };
+            noteContent = { type, title, info: { url } };
             break;
         case 'list':
-            newNote = { type, title, info: { todos } };
+            noteContent = { type, title, info: { todos } };
             break;
     }
-    newNote.id = utilService.makeId();
-    newNote.createdAt = Date.now();
-    return newNote;
+    noteContent.id = utilService.makeId();
+    noteContent.createdAt = Date.now();
+    return {
+        id: utilService.makeId(),
+        title,
+        isPinned: false,
+        content: [noteContent],
+        createdAt: Date.now(),
+    };
 }
 
 function _makeDefaultNotes(notesData) {

@@ -458,7 +458,6 @@ function _initReviews() {
         book.reviews = []
     })
 }
-console.log(gBooks);
 
 function query() {
     return storageService.query(BOOK_KEY)

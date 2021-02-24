@@ -1,9 +1,6 @@
 import noteForm from '../cmps/create-note-form.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
-import noteText from '../cmps/note-txt.cmp.js';
-import noteList from '../cmps/note-list.cmp.js';
-import noteImage from '../cmps/note-image.cmp.js';
-import noteVideo from '../cmps/note-video.cmp.js';
+import noteContainer from '../cmps/note-container.cmp.js';
 import { keepService } from '../services/keep.service.js';
 
 export default {
@@ -15,17 +12,18 @@ export default {
             <note-filter></note-filter>
             <hr/>
             <h2>Pinned</h2>
-            <div class="pinned">
-                <component v-for="(note,idx) in notes" :is="'note-' + note.type" :note="note"></component>
-            </div>
-            <div class="unpinned"></div>
+                <div class="pinned" v-for="(note) in pinnedNotes" :key="note.id">
+                    <note-container :note="note"></note-container>
+                </div>
+                <div class="unpinned" v-for="(note) in unPinnedNotes" :key="note.id">
+                    <note-container :note="note"></note-container>
+                </div>
         </div>`,
     data() {
         return {
             answers: null,
             notes: [],
             searchStr: '',
-            bullshit: ['note-text', 'note-video', 'note-image'],
         };
     },
     methods: {
@@ -40,16 +38,16 @@ export default {
         });
     },
     computed: {
-        noteType() {
-            return 'note-video';
+        pinnedNotes() {
+            return this.notes.filter((note) => note.isPinned);
+        },
+        unPinnedNotes() {
+            return this.notes.filter((note) => !note.isPinned);
         },
     },
     components: {
         noteForm,
         noteFilter,
-        noteText,
-        noteList,
-        noteImage,
-        noteVideo,
+        noteContainer,
     },
 };
