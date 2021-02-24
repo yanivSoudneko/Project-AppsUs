@@ -10,10 +10,13 @@ export default {
         </div>
         `,
     data() {
-        return {};
+        return { filterBy: null };
     },
-    methods: {},
-    components: {
-
+    methods: {
+        emitFilter() {
+            console.log(this.filterBy);
+            this.$emit('filterSelected', this.filterBy);
+        },
     },
+    components: {},
 };

@@ -1,3 +1,5 @@
+import { emailService } from '../services/mail.service.js';
+
 export default {
     template: /*html*/ `
         <div class="email-container flex a-center j-between">
@@ -22,7 +24,7 @@ export default {
         email: {
             deep: true,
             handler() {
-                console.log(this.email);
+                emailService.saveEmail(this.email).then((email) => this.email);
             },
         },
     },
