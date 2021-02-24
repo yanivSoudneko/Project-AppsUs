@@ -59,6 +59,19 @@
 
 /**MAIL**/
 
+.btn-list {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    margin: 0;
+}
+
+.filter-list {
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
 
 /* ABOUT */
 

@@ -6,12 +6,12 @@ import emailRead from '../cmps/email-read.cmp.js';
 export default {
     template: /*html*/ `
         <div class="main-size bg-primary contain-app">
-            <email-left-menu></email-left-menu>
-            <div class="email-filters-list-wrapper">
-                <email-filters></email-filters>
+        <div class="email-filters-list-wrapper">
+        <email-filters></email-filters>
                 <email-list :emails="filteredEmails"></email-list>
                 <email-read></email-read>
             </div>
+        <email-left-menu></email-left-menu>
         </div>`,
     data() {
         return {};

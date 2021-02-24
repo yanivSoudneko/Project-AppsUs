@@ -1,14 +1,14 @@
 export default {
     template: /*html*/ `
-        <div>
+        <div class="filter-list">
+        <select class ="filter-select">
+        <option value="All">All</option>
+        <option value="Read">Read</option>
+        <option value="Unread">Unread</option>
+        <option value="Marked">Marked</option>
+        <option value="Trash">Trash</option>
+        </select>
             <input list="filters" name="filter">
-            <datalist id="filters">
-                <option value="Edge">
-                <option value="Firefox">
-                <option value="Chrome">
-                <option value="Opera">
-                <option value="Safari">
-            </datalist>
         </div>`,
     data() {
         return {

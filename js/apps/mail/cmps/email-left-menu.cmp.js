@@ -1,13 +1,19 @@
 export default {
-    template: /*html*/`
-        <div>
+    template: /*html*/ `
+    <section>
+    
+    <div class="btn-list over-pad">
             <button>Compose</button>
             <button>Inbox</button>
             <button>Marked</button>
             <button>Trash</button>
-        </div>`,
+        </div>
+        </section>`,
     data() {
         return {};
     },
     methods: {},
+    components: {
+
+    },
 };
