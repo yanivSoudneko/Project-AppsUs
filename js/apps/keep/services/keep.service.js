@@ -7,6 +7,7 @@ export const keepService = {
     saveNote,
     makeTodo,
     makeNoteSegment,
+    removeNote,
 };
 
 const DB_NAME = 'notes_db';
@@ -122,4 +123,8 @@ function makeTodo(txt) {
 
 function _makeDefaultNotes(notesData) {
     return notesData.map((note) => makeNote(note));
+}
+
+function removeNote(noteId) {
+    return storageService.remove(DB_NAME, noteId);
 }

@@ -9,7 +9,7 @@ export default {
     template: /*html*/ `
         <div class="note-container" :style="{'background-color':bgColor,'border-color':borderColor}">
         <div class="top-note">
-            <button class="note-btn" @click="deleteNote()">x</button>
+            <button class="note-btn" @click="$emit('removeNote',note.id)">x</button>
             <div class="flex">
             <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
             <div class="color-sec" @click="openColInput('bgColInput')">
@@ -65,10 +65,6 @@ export default {
             this.note.content.push(content);
             console.log('this.note:', this.note);
             this.$emit('noteUpdated', this.note);
-        },
-        deleteNote() {
-            const noteId = this.note.id;
-            console.log('noteId:', noteId);
         },
         removeContentFromNote(id) {
             console.log('content id:', id, { note: this.note.content });
