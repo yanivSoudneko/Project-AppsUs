@@ -6,8 +6,8 @@ import { eventBus } from '../../../services/eventBus.service.js';
 export default {
     props: ['noteId'],
     template: /*html*/ `
-    <div class="flex column a-center">
-    <div class="flex a-center">
+    <div class="flex column a-center ">
+    <div class="flex a-center j-center">
         <div v-if="!noteId">
             <span>Title</span>
             <input class="search-bar" type="text" placeholder="add title" v-model="title">
@@ -18,13 +18,13 @@ export default {
             <input class="search-bar" type="text" :placeholder="typePlaceHolder" v-model="rawContent">
         </div>
         &nbsp;
-        <button @click="validateContent">save</button>
+        <button class="note-btn save-btn" @click="validateContent">save</button>
     </div>
         <div class="flex">
-            <button @click="type='text'">text</button>
-            <button @click="type='image'">image</button>
-            <button @click="type='video'">video</button>
-            <button @click="type='list'">list</button>
+            <button class="note-btn" @click="type='text'"><img class="side-bar" src="images/keep-img/txt.png"></button>
+            <button class="note-btn" @click="type='image'"><img class="side-bar" src="images/keep-img/img.png"></button>
+            <button class="note-btn" @click="type='video'"><img class="side-bar" src="images/keep-img/video.png"></button>
+            <button class="note-btn" @click="type='list'"><img class="side-bar" src="images/keep-img/todos.png"></button>
         </div>
     </div>`,
     data() {

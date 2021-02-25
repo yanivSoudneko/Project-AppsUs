@@ -8,7 +8,19 @@ export default {
     props: ['note'],
     template: /*html*/ `
         <div class="note-container" :style="{'background-color':bgColor,'border-color':borderColor}">
-            <button @click="deleteNote()">x</button>
+        <div class="top-note">
+            <button class="note-btn" @click="deleteNote()">x</button>
+            <div class="flex">
+            <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
+            <div class="color-sec" @click="openColInput('bgColInput')">
+            <img class="note-color-img" src="images/fill.png"/>
+            </div>
+            <input ref="borderColInput" type="color" v-model="borderColor" style="visibility:hidden"/>
+            <div class="color-sec" @click="openColInput('borderColInput')">
+                <img class="note-color-img" src="images/bgc.png"/>
+                </div>
+            </div>
+            </div>
             <h3>{{note.title}}</h3>
             
             <div 
@@ -24,10 +36,6 @@ export default {
             
             <div class="note-date">{{parsedDate}}</div>
             <note-form @noteSectionMade="addContentToNote" :noteId="note.id"></note-form>
-            <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
-            <div @click="openColInput('bgColInput')"  :style="{'background-color':bgColor}">BG</div>
-            <input ref="borderColInput" type="color" v-model="borderColor" style="visibility:hidden"/>
-            <div @click="openColInput('borderColInput')" :style="{'background-color':borderColor}">BORDER</div>
         </div>`,
     data() {
         return {

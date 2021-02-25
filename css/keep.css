@@ -1,5 +1,11 @@
+@import "./flex-grid.css";
 .note-image {
     width: 5vw;
+}
+
+h1,
+h1 {
+    font-family: ship;
 }
 
 .main-container-keep {
@@ -15,13 +21,12 @@
 .notes-container {
     display: flex;
     flex-wrap: wrap;
+    font-family: ship;
 }
 
 .note-container {
     border: 1px solid black;
-    /* height: 150px; */
-    max-width: 300px;
-    word-break: break-word;
+    max-width: 250px;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
@@ -30,4 +35,44 @@
 
 .note-container>* {
     padding: 10px 0;
+}
+
+.save-btn {
+    font-size: 16px;
+    bottom: 10px;
+    color: grey;
+}
+
+.note-color-img {
+    width: 30px;
+    height: 20px;
+}
+
+.note-btn {
+    background-color: transparent;
+    color: black;
+    border: none;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.color-sec {
+    width: 40px;
+    height: 20px;
+}
+
+.top-note {
+    display: flex;
+    justify-content: space-between;
+}
+
+.not-filter {
+    padding: 10px;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.note-header {
+    padding: 10px;
+    font-family: ship;
 }
