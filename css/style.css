@@ -68,7 +68,7 @@
 /**MAIL**/
 
 .mail-app {
-    background-image: url(../images/inbox.jpg);
+    background-image: url(../images/mail-background.jpg);
     max-height: 85vh;
     background-color: white;
     -webkit-background-size: cover;
@@ -95,7 +95,11 @@
     justify-content: space-between;
     border-radius: 10px;
     padding: 5px;
-    background-color: rgb(184, 178, 178, 0.6);
+    background-color: white;
+}
+
+.email-container:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .email-list .email-container .btn-subject-wrapper {
