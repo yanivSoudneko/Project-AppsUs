@@ -13,7 +13,7 @@ export default {
     methods: {
         routeToRead(id) {
             console.log('read', id);
-            this.$router.push('/mail/' + id);
+            this.$router.push('/mail/read/' + id);
         },
     },
     created() {
