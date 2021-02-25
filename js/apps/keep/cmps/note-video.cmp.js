@@ -1,7 +1,7 @@
 export default {
     template: /*html*/ `
         <div>
-            <iframe width="420" height="315"
+            <iframe width="200" height="90"
                 :src="content.info.url">
             </iframe>
         </div>`,

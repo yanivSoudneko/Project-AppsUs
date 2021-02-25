@@ -7,8 +7,7 @@ export const keepService = {
 };
 
 const DB_NAME = 'notes_db';
-var defaultNotes = [
-    {
+var defaultNotes = [{
         type: 'text',
         info: {
             txt: 'Fullstack Me Baby!',
@@ -18,8 +17,7 @@ var defaultNotes = [
     {
         type: 'image',
         info: {
-            url:
-                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            url: 'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
             title: 'Me image title',
         },
     },
@@ -27,14 +25,13 @@ var defaultNotes = [
         type: 'video',
         info: {
             url: 'https://www.youtube.com/embed/tgbNymZ7vqY',
-            title: 'Me video ttle',
+            title: 'Me video title',
         },
     },
     {
         type: 'image',
         info: {
-            url:
-                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            url: 'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
             title: 'Me image again title',
         },
     },

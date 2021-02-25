@@ -14,7 +14,7 @@ export default {
                 @inputSearchStr="getEmailsBySearch"></email-filters>
         </div>
         <div class="mail-container flex j-between">
-            <email-left-menu></email-left-menu>
+            <email-left-menu  @filterSelected="getFilteredEmails"></email-left-menu>
             <email-list :emails="emails"></email-list>
         </div>
     </div>`,
@@ -52,6 +52,10 @@ export default {
             emailService
                 .query(filterSettings.filter, filterSettings.bool)
                 .then((emails) => {
+                    if (!emails || !emails.length) {
+                        this.emails = []
+                        return
+                    }
                     this.emails = emails;
                     console.log(' this.emails:', this.emails);
                 })

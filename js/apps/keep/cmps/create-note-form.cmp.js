@@ -77,7 +77,7 @@ export default {
                             `url:${url} not a valid youtube url`,
                             'error',
                         );
-                        return;
+                        // return;
                         newNote = keepService.makeNote({
                             type: this.type,
                             mainTitle: title,
@@ -119,16 +119,12 @@ export default {
             switch (this.type) {
                 case 'text':
                     return 'Add some text';
-                    break;
                 case 'image':
                     return 'Add an image link';
-                    break;
                 case 'video':
                     return 'Add an youtube link';
-                    break;
                 case 'list':
                     return 'insert todo,todo,todo';
-                    break;
             }
         },
     },

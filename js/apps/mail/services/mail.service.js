@@ -10,8 +10,7 @@ export const emailService = {
 
 const DB_NAME = 'emails_db';
 var defaultMails = [];
-const emailsData = [
-    {
+const emailsData = [{
         subject: 'Hello',
         body: 'How are you?',
     },
@@ -90,7 +89,7 @@ function query(filter = null, bool) {
         if (filter && emails[0].hasOwnProperty(filter)) {
             emails = emails.filter((email) => email[filter] === bool);
             console.log('emails filtered:', emails);
-            console.log({ id: emails[0].id, isTrashed: emails[0].isTrashed });
+            // console.log({ id: emails[0].id, isTrashed: emails[0].isTrashed });
         }
         return emails;
     });

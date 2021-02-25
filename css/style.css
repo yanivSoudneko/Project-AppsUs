@@ -64,11 +64,6 @@
 
 /**KEEPS**/
 
-.keep-icon {
-    width: 20px;
-    height: 20px;
-}
-
 
 /**MAIL**/
 
@@ -203,7 +198,7 @@ a:hover {
 /* FOOTER */
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
     background-color: #b5b0b0;

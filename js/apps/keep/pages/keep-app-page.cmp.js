@@ -5,19 +5,23 @@ import { keepService } from '../services/keep.service.js';
 
 export default {
     template: /*html*/ `
-        <div class="main-container">
+        <div class="main-container-keep">
             <h1>Create Note:</h1>
             <note-form></note-form>
             <hr/>
             <note-filter></note-filter>
-            <hr/>
             <h2>Pinned</h2>
-                <div class="pinned" v-for="(note) in pinnedNotes" :key="note.id">
-                    <note-container :note="note"></note-container>
-                </div>
-                <div class="unpinned" v-for="(note) in unPinnedNotes" :key="note.id">
-                    <note-container :note="note"></note-container>
-                </div>
+            <hr/>
+            <div class="pinned" v-for="(note) in pinnedNotes" :key="note.id">
+            <note-container :note="note"></note-container>
+            </div>
+            <h2>UnPinned</h2>
+            <hr/>
+            <div class="notes-container">
+            <div class="unpinned" v-for="(note) in unPinnedNotes" :key="note.id">
+            <note-container :note="note"></note-container>
+            </div>
+            </div>
         </div>`,
     data() {
         return {
