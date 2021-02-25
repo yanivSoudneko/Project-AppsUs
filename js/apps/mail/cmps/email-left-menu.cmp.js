@@ -3,10 +3,10 @@ export default {
     
     
     <div class="btn-list over-pad">
-            <button><img class="side-bar" src="images/add.png"/>Compose</button>
-            <button @click="filterBy = 'inbox'"><img class="side-bar" src="images/inbox.jpg"/>Inbox</button>
-            <button @click="filterBy = 'favorites'"><img class="side-bar" src="images/star.jpg"/>Marked</button>
-            <button @click="filterBy = 'trash'"><img class="side-bar" src="images/trash.jpg"/>Trash</button>
+            <button class="left-btn first-btn"><img class="side-bar" src="images/add.png"/>Compose</button>
+            <button class="left-btn" @click="filterBy = 'inbox'"><img class="side-bar" src="images/inbox.jpg"/>Inbox</button>
+            <button class="left-btn" @click="filterBy = 'favorites'"><img class="side-bar" src="images/star.jpg"/>Marked</button>
+            <button class="left-btn" @click="filterBy = 'trash'"><img class="side-bar" src="images/trash.jpg"/>Trash</button>
         </div>
         `,
     data() {
