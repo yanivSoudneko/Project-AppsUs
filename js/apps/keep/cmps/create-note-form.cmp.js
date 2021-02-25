@@ -143,6 +143,7 @@ export default {
         },
         emitAddedNote() {
             this.$emit('refreshNoteList', true);
+            this.resetNote();
         },
         createNewNote() {
             const noteClone = JSON.parse(JSON.stringify(this.note));
@@ -159,8 +160,15 @@ export default {
                 .then((note) => {
                     this.emitToast('note added!', 'success');
                     this.emitAddedNote();
+                    this.resetNote();
                 })
                 .catch((err) => this.emitToast(JSON.stringify(err), 'error'));
+        },
+        resetNote() {
+            this.title = '';
+            this.rawContent = '';
+            this.type = 'text';
+            this.note = {};
         },
     },
     watch: {
