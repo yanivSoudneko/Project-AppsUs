@@ -5,7 +5,7 @@ import { keepService } from '../services/keep.service.js';
 import { eventBus } from '../../../services/eventBus.service.js';
 export default {
     template: /*html*/ `
-        <div class="main-container-keep">
+        <div class="main-container-keep main-size bg-primary contain-app">
             <h1 class="note-header">Create Note:</h1>
             <note-form @refreshNoteList="getNotes"></note-form>
             <hr/>
