@@ -9,6 +9,7 @@ export const keepService = {
     makeNoteSegment,
     removeNote,
     filterNotesBySearchTerm,
+    getNote
 };
 
 const DB_NAME = 'notes_db';
@@ -84,6 +85,10 @@ function filterNotesBySearchTerm(searchTerm) {
         );
         return notes;
     });
+}
+
+function getNote(noteId) {
+    return storageService.get(DB_NAME, noteId);
 }
 
 function saveNote(saveNote) {
