@@ -2,6 +2,7 @@
 @import "./flex-grid.css";
 @import "./book.css";
 @import "./keep.css";
+@import "./mail-media-queries.css";
 
 /**LAYOUT**/
 
@@ -73,9 +74,10 @@
     background-image: url(../images/mail-background.jpg);
     max-height: 85vh;
     background-color: white;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -225,12 +227,14 @@ input[name="email-subject"]:hover {
 }
 
 .about-container {
-    position: absolute;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+    align-items: center;
     color: #474444;
-    left: 285px;
+    margin: 0 auto;
     padding: 20px;
-    top: 50px;
     max-width: 350px;
 }
 
@@ -293,8 +297,16 @@ footer {
 
 /* ICONS */
 
-.fa-plus-circle {
-    color: red;
-    font-size: 20px;
-    padding-right: 8px;
+@media (max-width:680px) {
+    .mail-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .btn-list {
+        display: flex;
+        flex-direction: row;
+    }
+    .left-btn {
+        content: '';
+    }
 }
