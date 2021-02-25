@@ -24,10 +24,10 @@ export default {
             <h3>{{note.title}}</h3>
             
             <div 
-            class="note-content-container"                
+            class="note-content-container flex column"                
             v-for="(content,idx) in note.content" 
             :key="content.id">
-            <button @click="removeContentFromNote(content.id)">x</button>
+            <button class="note-btn" style="margin-left:9%;"@click="removeContentFromNote(content.id)">x</button>
             <component 
             :is="'note-' + content.type" 
             :content="content"></component>

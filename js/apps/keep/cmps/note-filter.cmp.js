@@ -9,7 +9,6 @@ export default {
     },
     methods: {
         setFilter() {
-            // console.log(this.searchStr);
             this.$emit('emitedSearchTerm', this.searchStr);
         },
     },

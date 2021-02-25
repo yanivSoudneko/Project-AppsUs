@@ -77,7 +77,6 @@ function filterNotesBySearchTerm(searchTerm) {
         if (!notes || !notes.length) {
             notes = [];
         }
-        console.log('notes:', notes);
         searchTerm = searchTerm.toLowerCase();
         notes = notes.filter(
             (note) =>
