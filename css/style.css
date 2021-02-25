@@ -33,8 +33,9 @@
     background-color: #b5b0b0;
 }
 
-.contain-app {
-    height: 85vh;
+.side-bar {
+    width: 20px;
+    height: 20px;
 }
 
 
@@ -71,18 +72,34 @@
 
 /**MAIL**/
 
+.mail-app {
+    background-image: url(../images/inbox.jpg);
+    max-height: 85vh;
+    background-color: white;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.email-read {
+    overflow: scroll;
+}
+
 .email-list {
     padding: 15px;
-    background-color: #fff;
+    background-color: transparent;
     gap: 20px;
     flex: 1;
     margin-left: 10px;
-    background-image: url(../images/mail.jpg);
     background-size: cover;
 }
 
 .email-list .email-container {
-    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 5px;
     background-color: rgb(184, 178, 178, 0.6);
 }
 
@@ -168,7 +185,9 @@ a:hover {
     color: rgb(129, 139, 129);
 }
 
+
 /**USER-MSG**/
+
 .user-msg {
     position: absolute;
     min-width: 10vw;
@@ -176,9 +195,10 @@ a:hover {
     top: 50px;
     right: 50px;
     background-color: rgb(46, 192, 33);
-    z-index:999999;
-    color:black;
+    z-index: 999999;
+    color: black;
 }
+
 
 /* FOOTER */
 

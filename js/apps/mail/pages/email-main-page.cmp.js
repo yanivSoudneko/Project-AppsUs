@@ -7,7 +7,7 @@ import { emailService } from '../services/mail.service.js';
 
 export default {
     template: /*html*/ `
-    <div class="main-size bg-primary contain-app">
+    <div class=" mail-app main-size bg-primary contain-app ">
         <div class="email-filters-list-wrapper">
             <email-filters 
                 @filterSelected="getFilteredEmails" 
