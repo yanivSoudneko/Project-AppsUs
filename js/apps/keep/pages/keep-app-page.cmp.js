@@ -7,9 +7,10 @@ export default {
     template: /*html*/ `
         <div class="main-container-keep">
             <h1>Create Note:</h1>
-            <note-form></note-form>
+            <note-form @refreshNoteList="getNotes"></note-form>
             <hr/>
             <note-filter></note-filter>
+            <hr/>
             <h2>Pinned</h2>
             <hr/>
             <div class="pinned" v-for="(note) in pinnedNotes" :key="note.id">
@@ -34,12 +35,16 @@ export default {
         save() {
             console.log('Saving..', this.answers);
         },
+        getNotes() {
+            console.log('hello emit?');
+            keepService.query().then((notes) => {
+                this.notes = notes;
+                console.log(' this.notes :', this.notes);
+            });
+        },
     },
     created() {
-        keepService.query().then((notes) => {
-            this.notes = notes;
-            console.log(' this.notes :', this.notes);
-        });
+        this.getNotes();
     },
     computed: {
         pinnedNotes() {

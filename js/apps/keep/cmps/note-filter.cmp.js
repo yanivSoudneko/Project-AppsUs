@@ -1,6 +1,7 @@
 export default {
     template: /*html*/ `
-    <div>
+    <div class="flex a-center">
+        <span> Search:</span>
         <input type="text" @input="setFilter" v-model="searchStr"/>
     </div>`,
     data() {
@@ -9,7 +10,7 @@ export default {
     methods: {
         setFilter() {
             console.log(this.filterBy);
-            this.$emit('filtered', this.filterBy)
-        }
+            this.$emit('filtered', this.filterBy);
+        },
     },
 };
