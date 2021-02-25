@@ -8,6 +8,8 @@ export const keepService = {
     makeTodo,
     makeNoteSegment,
     removeNote,
+    filterNotesBySearchTerm,
+    getNote
 };
 
 const DB_NAME = 'notes_db';
@@ -69,6 +71,24 @@ function query(filter = null, bool) {
         }
         return notes;
     });
+}
+
+function filterNotesBySearchTerm(searchTerm) {
+    return storageService.query(DB_NAME).then((notes) => {
+        if (!notes || !notes.length) {
+            notes = [];
+        }
+        searchTerm = searchTerm.toLowerCase();
+        notes = notes.filter(
+            (note) =>
+                note.title && note.title.toLowerCase().includes(searchTerm),
+        );
+        return notes;
+    });
+}
+
+function getNote(noteId) {
+    return storageService.get(DB_NAME, noteId);
 }
 
 function saveNote(saveNote) {

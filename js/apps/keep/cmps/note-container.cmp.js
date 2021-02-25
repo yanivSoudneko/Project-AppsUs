@@ -8,32 +8,30 @@ export default {
     props: ['note'],
     template: /*html*/ `
         <div class="note-container" :style="{'background-color':bgColor,'border-color':borderColor}">
-        <div class="top-note">
-            <button class="note-btn" @click="$emit('removeNote',note.id)">x</button>
-            <div class="flex">
-            <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
-            <div class="color-sec" @click="openColInput('bgColInput')">
-            <img class="note-color-img" src="images/fill.png"/>
-            </div>
-            <input ref="borderColInput" type="color" v-model="borderColor" style="visibility:hidden"/>
-            <div class="color-sec" @click="openColInput('borderColInput')">
-                <img class="note-color-img" src="images/bgc.png"/>
+            <div class="top-note">
+                <button class="note-btn" @click="$emit('togglePinned',note.id)">📌</button>
+                <button class="note-btn" @click="$emit('removeNote',note.id)">x</button>
+                <div class="flex">
+                    <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
+                    <div class="color-sec" @click="openColInput('bgColInput')">
+                    <img class="note-color-img" src="images/fill.png"/>
+                </div>
+                <input ref="borderColInput" type="color" v-model="borderColor" style="visibility:hidden"/>
+                <div class="color-sec" @click="openColInput('borderColInput')">
+                    <img class="note-color-img" src="images/bgc.png"/>
+                </div>
                 </div>
             </div>
-            </div>
-            <h3>{{note.title}}</h3>
-            
+            <h3>{{note.title}}</h3>  
             <div 
-            class="note-content-container"                
+            class="note-content-container flex column"                
             v-for="(content,idx) in note.content" 
             :key="content.id">
-            <button @click="removeContentFromNote(content.id)">x</button>
-            <component 
-            :is="'note-' + content.type" 
-            :content="content"></component>
+                <button class="note-btn" style="margin-left:9%;"@click="removeContentFromNote(content.id)">x</button>
+                <component 
+                :is="'note-' + content.type" 
+                :content="content"></component>
             </div>
-            
-            
             <div class="note-date">{{parsedDate}}</div>
             <note-form @noteSectionMade="addContentToNote" :noteId="note.id"></note-form>
         </div>`,
