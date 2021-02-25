@@ -7,6 +7,7 @@ import bookApp from './apps/book/pages/book-app.cmp.js';
 import bookDetails from './apps/book/pages/book-details.cmp.js';
 import bookAddPage from './apps/book/pages/book-add-page.cmp.js';
 import mailRead from './apps/mail/pages/email-read-page.cmp.js';
+import mailCompose from './apps/mail/pages/email-compose-page.cmp.js';
 
 const routes = [
     { path: '/', component: homePage },
@@ -34,6 +35,11 @@ const routes = [
             {
                 path: 'read/:emailId',
                 component: mailRead,
+            },
+            {
+                name: 'compose',
+                path: 'compose',
+                component: mailCompose,
             },
         ],
     },

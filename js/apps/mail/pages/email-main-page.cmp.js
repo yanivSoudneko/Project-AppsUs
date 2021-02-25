@@ -4,6 +4,7 @@ import emailList from '../cmps/email-list.cmp.js';
 import emailRead from './email-read-page.cmp.js';
 
 import { emailService } from '../services/mail.service.js';
+import { eventBus } from '../../../services/eventBus.service.js';
 
 export default {
     template: /*html*/ `
@@ -53,8 +54,8 @@ export default {
                 .query(filterSettings.filter, filterSettings.bool)
                 .then((emails) => {
                     if (!emails || !emails.length) {
-                        this.emails = []
-                        return
+                        this.emails = [];
+                        return;
                     }
                     this.emails = emails;
                     console.log(' this.emails:', this.emails);
@@ -75,6 +76,17 @@ export default {
                     console.error(err);
                 });
         },
+        getInbox() {
+            emailService
+                .query('isTrashed', false)
+                .then((emails) => {
+                    this.emails = emails;
+                    console.log(' this.emails:', this.emails);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        },
     },
     components: {
         emailLeftMenu,
@@ -83,13 +95,10 @@ export default {
         emailRead,
     },
     created() {
-        emailService
-            .query('isTrashed', false)
-            .then((emails) => {
-                this.emails = emails;
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        eventBus.$on('reloadEmails', this.getInbox);
+        this.getInbox();
+    },
+    destroyed() {
+        eventBus.$off('reloadEmails', true);
     },
 };
