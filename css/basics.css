@@ -84,3 +84,7 @@ button {
 button:hover {
     filter: brightness(85%);
 }
+
+.bold-text {
+    font-weight: 900;
+}

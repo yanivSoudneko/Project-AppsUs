@@ -8,7 +8,7 @@ export default {
                 <div class="favorite star" @click.stop="email.isFavorite = !email.isFavorite" :class="{yellow: email.isFavorite}">&#9733;</div>
                 <div class="read" @click.stop="email.isRead = !email.isRead">{{isReadSymbol}}</div>
                 </div>
-                <div class="subject">
+                <div class="subject" :class="{'bold-text':!email.isRead}">
                     {{email.subject}}
             </div>
             <div class="created-at">

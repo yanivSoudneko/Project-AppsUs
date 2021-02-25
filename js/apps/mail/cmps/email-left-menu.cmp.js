@@ -1,4 +1,4 @@
-import { eventBus } from '../../../services/eventBus.service.js'
+import { eventBus } from '../../../services/eventBus.service.js';
 export default {
     template: /*html*/ `
     
@@ -11,49 +11,48 @@ export default {
         </div>
         `,
     data() {
-        return { filterBy: null, windowWidth: null };
+        return {
+            filterBy: null,
+            windowWidth: null,
+        };
     },
     watch: {
         filterBy() {
-            console.log(this.filterBy);
             this.emitFilter();
         },
     },
     computed: {
-        reactForResize() {
-
-        },
+        reactForResize() {},
         compose() {
-            return this.windowWidth < 680 ? '' : 'Compose'
+            if (!this.windowWidth) return 'Compose';
+            return this.windowWidth < 680 ? '' : 'Compose';
         },
         inbox() {
-            return this.windowWidth < 680 ? '' : 'Inbox'
+            if (!this.windowWidth) return 'Inbox';
+            return this.windowWidth < 680 ? '' : 'Inbox';
         },
         favorties() {
-            return this.windowWidth < 680 ? '' : 'Favorties'
+            if (!this.windowWidth) return 'Favorties';
+            return this.windowWidth < 680 ? '' : 'Favorties';
         },
         trash() {
-            return this.windowWidth < 680 ? '' : 'Trash'
+            if (!this.windowWidth) return 'Trash';
+            return this.windowWidth < 680 ? '' : 'Trash';
         },
     },
     methods: {
         emitFilter() {
-            console.log(this.filterBy);
             this.$emit('filterSelected', this.filterBy);
         },
-        reactToResize(width) {
-            console.log('width', width)
+        reactToResize(ev) {
+            this.windowWidth = ev.target.innerWidth;
         },
-        myEventHandler(ev) {
-            console.log('ev:', ev.target.innerWidth)
-            this.windowWidth = ev.target.innerWidth
-        }
     },
     components: {},
     created() {
-        window.addEventListener("resize", this.myEventHandler);
+        window.addEventListener('resize', this.reactToResize);
     },
     destroyed() {
-        window.removeEventListener("resize", this.myEventHandler);
+        window.removeEventListener('resize', this.reactToResize);
     },
 };

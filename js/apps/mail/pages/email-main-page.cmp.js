@@ -81,11 +81,13 @@ export default {
                 .query('isTrashed', false)
                 .then((emails) => {
                     this.emails = emails;
-                    console.log(' this.emails:', this.emails);
                 })
                 .catch((err) => {
                     console.error(err);
                 });
+        },
+        handleResize(size) {
+            console.log('size:', size);
         },
     },
     components: {
@@ -94,11 +96,15 @@ export default {
         emailList,
         emailRead,
     },
+    mounted() {},
+
     created() {
+        eventBus.$on('resizedWidth', this.handleResize);
         eventBus.$on('reloadEmails', this.getInbox);
         this.getInbox();
     },
     destroyed() {
-        eventBus.$off('reloadEmails', true);
+        eventBus.$off('reloadEmails', this.getInbox);
+        eventBus.$off('resizedWidth', this.handleResize);
     },
 };
