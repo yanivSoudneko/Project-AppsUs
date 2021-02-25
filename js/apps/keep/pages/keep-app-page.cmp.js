@@ -2,7 +2,7 @@ import noteForm from '../cmps/create-note-form.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
 import noteContainer from '../cmps/note-container.cmp.js';
 import { keepService } from '../services/keep.service.js';
-
+import { eventBus } from '../../../services/eventBus.service.js';
 export default {
     template: /*html*/ `
         <div class="main-container-keep">
@@ -45,7 +45,22 @@ export default {
         },
         removeSegment({ noteId, segmentId }) {
             console.log(' noteId, segmentId:', { noteId, segmentId });
-            // this.notes
+            const targetNote = this.notes.filter(({ id }) => id === noteId)[0];
+            targetNote.content = targetNote.content.filter(
+                ({ id }) => id != segmentId,
+            );
+
+            if (!targetNote.content.length) {
+                this.deleteNote(noteId);
+            }
+
+            keepService.saveNote(targetNote).then((note) => {
+                eventBus.$emit('show-msg', {
+                    txt: 'note updated',
+                    type: 'success',
+                });
+                this.getNotes();
+            });
         },
         getNotes() {
             console.log('hello emit?');
