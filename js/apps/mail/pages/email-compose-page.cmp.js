@@ -30,7 +30,7 @@ export default {
                 return;
             }
 
-            const saveMail = id ? { id, subject, body } : { subject, body };
+            const saveMail = id ? this.email : { subject, body };
 
             emailService.saveEmail(saveMail).then((email) => {
                 console.log('email:', email);
