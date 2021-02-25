@@ -4,6 +4,7 @@ import { utilService } from '../../../services/util.service.js';
 import { eventBus } from '../../../services/eventBus.service.js';
 
 export default {
+    props: ['formInNote'],
     template: /*html*/ `
     <div class="flex column a-center">
     <div class="flex a-center">
@@ -144,6 +145,13 @@ export default {
         createNewNote() {
             const noteClone = JSON.parse(JSON.stringify(this.note));
             this.note = {};
+            if (this.formInNote) {
+                const { type, info } = noteClone;
+                this.$emit('noteSectionMade', {
+                    type,
+                    info,
+                });
+            }
             keepService
                 .saveNote(noteClone)
                 .then((note) => {
