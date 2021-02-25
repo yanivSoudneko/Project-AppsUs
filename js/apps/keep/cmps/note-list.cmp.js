@@ -12,16 +12,7 @@ export default {
         return {};
     },
     methods: {},
-    computed: {
-        // noteToShow() {
-        //     console.log('bookToShow');
-        //     if (!this.filterBy) return this.content
-        //     const searchStr = this.filterBy.byName.toLowerCase()
-        //     const bookToShow = this.books.filter(book => {
-        //         return book.title.toLowerCase().includes(searchStr) 
-        //             
-        //     })
-        //     return bookToShow
-        // }
+    created() {
+        console.log('TODO:', { id: this.content.id, info: this.content.info });
     },
 };

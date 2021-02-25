@@ -4,10 +4,13 @@ import { utilService } from '../../../services/util.service.js';
 export const keepService = {
     query,
     makeNote,
+    saveNote,
+    makeTodo,
 };
 
 const DB_NAME = 'notes_db';
-var defaultNotes = [{
+var defaultNotes = [
+    {
         type: 'text',
         info: {
             txt: 'Fullstack Me Baby!',
@@ -17,7 +20,8 @@ var defaultNotes = [{
     {
         type: 'image',
         info: {
-            url: 'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            url:
+                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
             title: 'Me image title',
         },
     },
@@ -31,7 +35,8 @@ var defaultNotes = [{
     {
         type: 'image',
         info: {
-            url: 'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
+            url:
+                'https://previews.123rf.com/images/liubomirt/liubomirt1105/liubomirt110500053/9591780-crazy-rock-star-with-skull-and-deflated-toy-guitar-burning-his-tongue-with-hot-electric-compact-heat.jpg',
             title: 'Me image again title',
         },
     },
@@ -65,8 +70,8 @@ function query(filter = null, bool) {
 }
 
 function saveNote(saveNote) {
-    return getById(saveNote.id).then((email) => {
-        if (email) return storageService.put(DB_NAME, saveNote);
+    return storageService.get(DB_NAME, saveNote.id).then((note) => {
+        if (note) return storageService.put(DB_NAME, saveNote);
         return storageService.post(DB_NAME, saveNote);
     });
 }
@@ -99,6 +104,10 @@ function makeNote(noteData) {
         content: [noteContent],
         createdAt: Date.now(),
     };
+}
+function makeTodo(txt) {
+    const todo = { txt, doneAt: null, isDone: false };
+    return todo;
 }
 
 function _makeDefaultNotes(notesData) {
