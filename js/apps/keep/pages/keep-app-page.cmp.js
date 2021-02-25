@@ -14,13 +14,13 @@ export default {
             <h2>Pinned</h2>
             <hr/>
             <div class="pinned" v-for="(note) in pinnedNotes" :key="note.id">
-            <note-container :note="note" @removeNote="deleteNote" @noteUpdated="saveUpdatedNote"></note-container>
+            <note-container :note="note" @removeSegemntFromNote="removeSegment" @removeNote="deleteNote" @noteUpdated="saveUpdatedNote"></note-container>
             </div>
             <hr/>
             <h2>UnPinned</h2>
             <div class="notes-container">
             <div class="unpinned" v-for="(note) in unPinnedNotes" :key="note.id">
-            <note-container :note="note"   @removeNote="deleteNote" @noteUpdated="saveUpdatedNote"></note-container>
+            <note-container :note="note"   @removeSegemntFromNote="removeSegment" @removeNote="deleteNote" @noteUpdated="saveUpdatedNote"></note-container>
             </div>
             </div>
         </div>`,
@@ -42,6 +42,10 @@ export default {
             keepService.removeNote(id).then((res) => {
                 this.getNotes();
             });
+        },
+        removeSegment({ noteId, segmentId }) {
+            console.log(' noteId, segmentId:', { noteId, segmentId });
+            // this.notes
         },
         getNotes() {
             console.log('hello emit?');

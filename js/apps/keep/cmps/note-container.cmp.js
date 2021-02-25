@@ -67,7 +67,10 @@ export default {
             this.$emit('noteUpdated', this.note);
         },
         removeContentFromNote(id) {
-            console.log('content id:', id, { note: this.note.content });
+            this.$emit('removeSegemntFromNote', {
+                segmentId: id,
+                noteId: this.note.id,
+            });
         },
     },
     computed: {

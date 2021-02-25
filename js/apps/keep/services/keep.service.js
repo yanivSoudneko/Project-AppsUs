@@ -128,3 +128,6 @@ function _makeDefaultNotes(notesData) {
 function removeNote(noteId) {
     return storageService.remove(DB_NAME, noteId);
 }
+function removeSegment(noteId, segmenId) {
+    console.log('noteId,segment.id:', noteId, segment.id);
+}
