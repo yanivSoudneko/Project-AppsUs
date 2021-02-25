@@ -8,6 +8,7 @@ export const keepService = {
     makeTodo,
     makeNoteSegment,
     removeNote,
+    filterNotesBySearchTerm,
 };
 
 const DB_NAME = 'notes_db';
@@ -67,6 +68,21 @@ function query(filter = null, bool) {
             notes = notes.filter((note) => note[filter] === bool);
             console.log('note filtered:', note);
         }
+        return notes;
+    });
+}
+
+function filterNotesBySearchTerm(searchTerm) {
+    return storageService.query(DB_NAME).then((notes) => {
+        if (!notes || !notes.length) {
+            notes = [];
+        }
+        console.log('notes:', notes);
+        searchTerm = searchTerm.toLowerCase();
+        notes = notes.filter(
+            (note) =>
+                note.title && note.title.toLowerCase().includes(searchTerm),
+        );
         return notes;
     });
 }

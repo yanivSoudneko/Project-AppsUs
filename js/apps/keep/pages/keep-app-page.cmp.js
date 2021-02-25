@@ -9,7 +9,7 @@ export default {
             <h1 class="note-header">Create Note:</h1>
             <note-form @refreshNoteList="getNotes"></note-form>
             <hr/>
-            <note-filter></note-filter>
+            <note-filter @emitedSearchTerm="filterBySearchTerm"></note-filter>
             <hr/>
             <h2>Pinned</h2>
             <hr/>
@@ -67,6 +67,12 @@ export default {
             keepService.query().then((notes) => {
                 this.notes = notes;
                 console.log(' this.notes :', this.notes);
+            });
+        },
+        filterBySearchTerm(searchTerm) {
+            keepService.filterNotesBySearchTerm(searchTerm).then((notes) => {
+                console.log('in app page', { searchTerm, notes });
+                this.notes = notes;
             });
         },
     },

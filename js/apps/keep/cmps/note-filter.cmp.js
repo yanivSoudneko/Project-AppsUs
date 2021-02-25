@@ -5,12 +5,12 @@ export default {
         <input type="text" @input="setFilter" v-model="searchStr"/>
     </div>`,
     data() {
-        return { searchStr: null, byName: '' };
+        return { searchStr: '' };
     },
     methods: {
         setFilter() {
-            console.log(this.filterBy);
-            this.$emit('filtered', this.filterBy);
+            // console.log(this.searchStr);
+            this.$emit('emitedSearchTerm', this.searchStr);
         },
     },
 };
