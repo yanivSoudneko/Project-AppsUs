@@ -7,23 +7,26 @@ export default {
             <option value="unread">Unread</option>
             <option value="favorites">Favorites</option>
         </select>
-            <input name="search" @input="emitSearchStr" v-model="searchStr">
+            <input name="searchSubject" @input="emitSearchStr" v-model="searchSubjectStr">
+            <input name="searchBody" @input="emitSearchStr" v-model="searchBodyStr">
         </div>`,
     data() {
         return {
             filterBy: 'all',
-            searchStr: '',
+            searchSubjectStr: '',
+            searchBodyStr: '',
         };
     },
     methods: {
         emitFilter() {
-            console.log(this.filterBy);
             this.$emit('filterSelected', this.filterBy);
         },
         emitSearchStr() {
-            console.log(this.searchStr);
             if (this.searchStr === '') return;
-            this.$emit('inputSearchStr', this.searchStr);
+            this.$emit('inputSearchStr', {
+                subject: this.searchSubjectStr,
+                body: this.searchBodyStr,
+            });
         },
     },
 };
