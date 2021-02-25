@@ -11,7 +11,8 @@ export const emailService = {
 
 const DB_NAME = 'emails_db';
 var defaultMails = [];
-const emailsData = [{
+const emailsData = [
+    {
         subject: 'Hello',
         body: 'How are you?',
     },
@@ -116,7 +117,7 @@ function query(filter = null, bool) {
 function searchEmailsForSearchStr({ subject, body }) {
     return storageService.query(DB_NAME).then((emails) => {
         if (!emails.length) return emails || [];
-        return emails = emails.filter((email) => {
+        return (emails = emails.filter((email) => {
             if (email.isTrashed) return false;
             let { subject: emailSubject, body: emailBody } = email;
             subject = subject.toLowerCase();
@@ -124,7 +125,7 @@ function searchEmailsForSearchStr({ subject, body }) {
             body = body.toLowerCase();
             emailBody = emailBody.toLowerCase();
             return emailSubject.includes(subject) && emailBody.includes(body);
-        });
+        }));
     });
 }
 
@@ -135,7 +136,7 @@ function getById(id) {
 function saveEmail(saveEmail) {
     return getById(saveEmail.id).then((email) => {
         if (email) return storageService.put(DB_NAME, saveEmail);
-        return storageService.post(DB_NAME, saveEmail);
+        return storageService.post(DB_NAME, _createDefaultEmail(saveEmail));
     });
 }
 

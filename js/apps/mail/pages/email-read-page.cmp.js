@@ -7,7 +7,7 @@ export default {
         <div class="email-content">{{email.body}}</div>
         <div class="email-read-btn">
         <button @click="$router.push('/mail')">Back</button>
-        <button>Reply</button>
+        <button @click="routeToCompose">Reply</button>
         <button @click="moveToTrash">{{deleteOrConfirm}}</button>
         </div>
     </div>`,
@@ -15,6 +15,12 @@ export default {
         return { email: null, confirm: false };
     },
     methods: {
+        routeToCompose() {
+            this.$router.replace({
+                name: 'compose',
+                query: { emailId: this.email.id },
+            });
+        },
         moveToTrash() {
             if (this.confirm) {
                 this.email.isTrashed = true;
