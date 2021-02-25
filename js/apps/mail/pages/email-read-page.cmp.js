@@ -5,9 +5,11 @@ export default {
     <div v-if="email" class="email-read main-size bg-primary contain-app">
         <div class="email-subject">{{email.subject}}</div>
         <div class="email-content">{{email.body}}</div>
+        <div class="email-read-btn">
         <button @click="$router.push('/mail')">Back</button>
         <button>Reply</button>
         <button @click="moveToTrash">{{deleteOrConfirm}}</button>
+        </div>
     </div>`,
     data() {
         return { email: null, confirm: false };

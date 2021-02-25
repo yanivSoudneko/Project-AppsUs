@@ -7,7 +7,9 @@ export default {
             <option value="unread">Unread</option>
             <option value="favorites">Favorites</option>
         </select>
+        <label for="searchSubject">Search in subject:</label>
             <input name="searchSubject" @input="emitSearchStr" v-model="searchSubjectStr">
+            <label for="searchBody">Search in body:</label>
             <input name="searchBody" @input="emitSearchStr" v-model="searchBodyStr">
         </div>`,
     data() {
