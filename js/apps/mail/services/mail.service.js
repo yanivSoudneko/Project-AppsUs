@@ -6,6 +6,7 @@ export const emailService = {
     getById,
     saveEmail,
     deleteEmail,
+    searchEmailsForSearchStr,
 };
 
 const DB_NAME = 'emails_db';
@@ -82,17 +83,29 @@ const emailsData = [
 //CRUD
 function query(filter = null, bool) {
     return storageService.query(DB_NAME).then((emails) => {
-        console.log('emails:', emails[0]);
         if (!emails.length) {
             emails = _addDefaultEmails(emailsData);
             storageService.postMany(DB_NAME, emails);
         }
         if (filter && emails[0].hasOwnProperty(filter)) {
             emails = emails.filter((email) => email[filter] === bool);
-            console.log('emails filtered:', emails);
-            console.log({ id: emails[0].id, isTrashed: emails[0].isTrashed });
         }
         return emails;
+    });
+}
+
+function searchEmailsForSearchStr({ subject, body }) {
+    return storageService.query(DB_NAME).then((emails) => {
+        if (!emails.length) return emails || [];
+        return emails = emails.filter((email) => {
+            if (email.isTrashed) return false;
+            let { subject: emailSubject, body: emailBody } = email;
+            subject = subject.toLowerCase();
+            emailSubject = emailSubject.toLowerCase();
+            body = body.toLowerCase();
+            emailBody = emailBody.toLowerCase();
+            return emailSubject.includes(subject) && emailBody.includes(body);
+        });
     });
 }
 

@@ -32,9 +32,6 @@ export default {
             this.email = email;
         });
     },
-    created() {
-        console.log('hello');
-    },
     computed: {
         deleteOrConfirm() {
             return this.confirm ? 'Confirm Delete' : 'Move ToTrash';

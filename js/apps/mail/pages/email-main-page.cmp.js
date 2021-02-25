@@ -59,17 +59,17 @@ export default {
                     console.error(err);
                 });
         },
-        getEmailsBySearch(searchStr) {
-            console.log('searchStr from emit:', searchStr);
-            // emailService
-            //     .query(filterBy, true)
-            //     .then((emails) => {
-            //         this.emails = emails;
-            //         console.log(' this.emails:', this.emails);
-            //     })
-            //     .catch((err) => {
-            //         console.error(err);
-            //     });
+        getEmailsBySearch({ subject, body }) {
+            console.log('searchStr from emit:', { subject, body });
+            emailService
+                .searchEmailsForSearchStr({ subject, body })
+                .then((emails) => {
+                    this.emails = emails;
+                    console.log(' this.emails:', this.emails);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
         },
     },
     components: {
@@ -83,7 +83,6 @@ export default {
             .query('isTrashed', false)
             .then((emails) => {
                 this.emails = emails;
-                console.log(' this.emails:', this.emails);
             })
             .catch((err) => {
                 console.error(err);

@@ -16,9 +16,6 @@ export default {
             this.$router.push('/mail/read/' + id);
         },
     },
-    created() {
-        console.log(this.emails);
-    },
     components: {
         emailListItem,
     },
