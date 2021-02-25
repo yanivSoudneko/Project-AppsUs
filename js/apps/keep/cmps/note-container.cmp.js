@@ -2,19 +2,70 @@ import noteText from './note-txt.cmp.js';
 import noteList from './note-list.cmp.js';
 import noteImage from './note-image.cmp.js';
 import noteVideo from './note-video.cmp.js';
+import noteForm from './create-note-form.cmp.js';
 
 export default {
     props: ['note'],
     template: /*html*/ `
-        <div class="note-container">
+        <div class="note-container" :style="{'background-color':bgColor,'border-color':borderColor}">
+            <button @click="deleteNote()">x</button>
             <h3>{{note.title}}</h3>
-                <component v-for="(content,idx) in note.content" :is="'note-' + content.type" :content="content" :key="content.id"></component>
+            
+            <div 
+            class="note-content-container"                
+            v-for="(content,idx) in note.content" 
+            :key="content.id">
+            <button @click="removeContentFromNote(content.id)">x</button>
+            <component 
+            :is="'note-' + content.type" 
+            :content="content"></component>
+            </div>
+            
+            
             <div class="note-date">{{parsedDate}}</div>
+            <note-form @noteSectionMade="addContentToNote" :noteId="note.id"></note-form>
+            <input ref="bgColInput" type="color" v-model="bgColor" style="visibility:hidden"/>
+            <div @click="openColInput('bgColInput')"  :style="{'background-color':bgColor}">BG</div>
+            <input ref="borderColInput" type="color" v-model="borderColor" style="visibility:hidden"/>
+            <div @click="openColInput('borderColInput')" :style="{'background-color':borderColor}">BORDER</div>
         </div>`,
     data() {
-        return {};
+        return {
+            bgColor: null,
+            borderColor: null,
+        };
     },
-    methods: {},
+    watch: {
+        bgColor() {
+            if (!this.note.style) this.note.style = {};
+            this.note.style.bgColor = this.bgColor;
+            this.$emit('noteUpdated', this.note);
+        },
+        borderColor() {
+            if (!this.note.style) this.note.style = {};
+            this.note.style.borderColor = this.borderColor;
+            this.$emit('noteUpdated', this.note);
+        },
+    },
+    methods: {
+        openColInput(refName) {
+            this.$refs[refName].focus();
+            this.$refs[refName].click();
+        },
+        addContentToNote(content) {
+            console.log('emitted up:', content);
+            this.note.content.push(content);
+            console.log('this.note:', this.note);
+            this.$emit('noteUpdated', this.note);
+        },
+        deleteNote() {
+            const noteId = this.note.id;
+            console.log('noteId:', noteId);
+        },
+        removeContentFromNote(id) {
+            console.log('content id:', id, { note: this.note.content });
+        },
+    },
     computed: {
         parsedDate() {
             return new Date(this.note.createdAt).toDateString();
@@ -25,6 +76,13 @@ export default {
         noteList,
         noteImage,
         noteVideo,
+        noteForm,
+    },
+    created() {
+        if (this.note.style) {
+            this.bgColor = this.note.style.bgColor;
+            this.borderColor = this.note.style.borderColor;
+        }
     },
 };
 

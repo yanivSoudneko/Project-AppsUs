@@ -11,8 +11,4 @@ export default {
     data() {
         return {};
     },
-    methods: {},
-    created() {
-        console.log('TODO:', { id: this.content.id, info: this.content.info });
-    },
 };

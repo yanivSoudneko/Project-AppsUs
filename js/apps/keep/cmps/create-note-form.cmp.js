@@ -4,11 +4,11 @@ import { utilService } from '../../../services/util.service.js';
 import { eventBus } from '../../../services/eventBus.service.js';
 
 export default {
-    props: ['formInNote'],
+    props: ['noteId'],
     template: /*html*/ `
     <div class="flex column a-center">
     <div class="flex a-center">
-        <div>
+        <div v-if="!noteId">
             <span>Title</span>
             <input class="search-bar" type="text" placeholder="add title" v-model="title">
         </div>
@@ -29,10 +29,9 @@ export default {
     </div>`,
     data() {
         return {
-            title: 'Text Title DEV',
-            rawContent:
-                'http://images.unsplash.com/photo-1560114928-40f1f1eb26a0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max',
-            type: 'list',
+            title: '',
+            rawContent: '',
+            type: 'text',
             note: {},
         };
     },
@@ -42,10 +41,13 @@ export default {
                 this.emitToast('Please add note content', 'error');
                 return;
             }
-            if (!this.title || this.title === '') {
-                this.emitToast('Please add note title', 'error');
-                return;
+            if (!this.noteId) {
+                if (!this.title || this.title === '') {
+                    this.emitToast('Please add note title', 'error');
+                    return;
+                }
             }
+
             if (!this.type) {
                 this.emitToast('Please select a type', 'error');
                 return;
@@ -134,7 +136,7 @@ export default {
                     break;
             }
 
-            console.log('newNote:', this.note);
+            // console.log('newNote:', this.note);
         },
         emitToast(txt, type = success) {
             eventBus.$emit('show-msg', { txt, type });
@@ -145,12 +147,12 @@ export default {
         createNewNote() {
             const noteClone = JSON.parse(JSON.stringify(this.note));
             this.note = {};
-            if (this.formInNote) {
-                const { type, info } = noteClone;
-                this.$emit('noteSectionMade', {
-                    type,
-                    info,
-                });
+            //when this component inside a note
+            if (this.noteId) {
+                const { type, info } = noteClone.content[0];
+                const segment = keepService.makeNoteSegment(type, info);
+                this.$emit('noteSectionMade', segment);
+                return;
             }
             keepService
                 .saveNote(noteClone)

@@ -6,6 +6,7 @@ export const keepService = {
     makeNote,
     saveNote,
     makeTodo,
+    makeNoteSegment,
 };
 
 const DB_NAME = 'notes_db';
@@ -103,6 +104,15 @@ function makeNote(noteData) {
         isPinned: false,
         content: [noteContent],
         createdAt: Date.now(),
+    };
+}
+
+function makeNoteSegment(type, segment) {
+    return {
+        createdAt: Date.now(),
+        id: utilService.makeId(),
+        info: segment,
+        type,
     };
 }
 function makeTodo(txt) {
