@@ -126,8 +126,8 @@ input[name="email-subject"]:hover {
     padding: 15px;
     background-color: transparent;
     gap: 20px;
-    flex: 1;
-    height: 300px;
+    /* flex-grow: 1; */
+    max-height: 60vh;
     overflow: scroll;
     margin-left: 10px;
     margin-top: 50px;
@@ -327,7 +327,7 @@ a:hover {
 
 /* ICONS */
 
-@media (max-width:680px) {
+@media (max-width:860px) {
     .mail-container {
         display: flex;
         flex-direction: column;

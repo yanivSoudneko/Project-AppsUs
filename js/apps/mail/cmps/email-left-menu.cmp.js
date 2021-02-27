@@ -25,19 +25,19 @@ export default {
         reactForResize() {},
         compose() {
             if (!this.windowWidth) return 'Compose';
-            return this.windowWidth < 680 ? '' : 'Compose';
+            return this.windowWidth < 860 ? '' : 'Compose';
         },
         inbox() {
             if (!this.windowWidth) return 'Inbox';
-            return this.windowWidth < 680 ? '' : 'Inbox';
+            return this.windowWidth < 860 ? '' : 'Inbox';
         },
         favorties() {
             if (!this.windowWidth) return 'Favorties';
-            return this.windowWidth < 680 ? '' : 'Favorties';
+            return this.windowWidth < 860 ? '' : 'Favorties';
         },
         trash() {
             if (!this.windowWidth) return 'Trash';
-            return this.windowWidth < 680 ? '' : 'Trash';
+            return this.windowWidth < 860 ? '' : 'Trash';
         },
     },
     methods: {

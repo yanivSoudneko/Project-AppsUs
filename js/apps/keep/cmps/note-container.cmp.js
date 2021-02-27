@@ -29,7 +29,8 @@ export default {
             :key="content.id">
                 <button class="note-btn" style="margin-left:9%;"@click="removeContentFromNote(content.id)">x</button>
                 <component 
-                :is="'note-' + content.type" 
+                :is="'note-' + content.type"
+                @todoChecked="updateTodo"
                 :content="content"></component>
             </div>
             <div class="note-date">{{parsedDate}}</div>
@@ -69,6 +70,15 @@ export default {
                 segmentId: id,
                 noteId: this.note.id,
             });
+        },
+        updateTodo({ idx }) {
+            this.note.content[0].info.todos[idx].isDone = !this.note.content[0]
+                .info.todos[idx].isDone;
+            console.log(
+                'this.note.content[0].info.todos[idx].isDone:',
+                this.note.content[0].info.todos[idx].isDone,
+            );
+            this.$emit('noteUpdated', this.note);
         },
     },
     computed: {
